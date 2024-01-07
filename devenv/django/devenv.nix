@@ -5,7 +5,7 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [pkgs.python3Packages.mysqlclient];
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = "echo hello from $GREET";
@@ -25,6 +25,12 @@
 
   # https://devenv.sh/processes/
   # processes.ping.exec = "ping example.com";
+
+  services.mysql = {
+    enable = true;
+    ensureUsers = [{name = "user"; password = "password";}];
+    initialDatabases = [{name = "sample";}];
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
