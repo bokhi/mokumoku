@@ -26,6 +26,8 @@
   # https://devenv.sh/processes/
   # processes.ping.exec = "ping example.com";
 
+  devcontainer.enable = true;
+
   services.mysql = {
     enable = true;
     ensureUsers = [{name = "user"; password = "password";}];
